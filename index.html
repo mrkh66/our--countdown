@@ -268,7 +268,11 @@ Every second brings us closer together.
 
 <script>
 
-const startDate = new Date("2026-06-15T00:00:00");
+const waitStartDate = new Date("2026-03-31T00:00:00");
+const reunionDate = new Date("2026-07-13T00:00:00");
+
+// This is only used for the progress bar
+const progressStartDate = new Date("2026-06-15T00:00:00");
 
 const reunionDate = new Date("2026-07-13T00:00:00");
 
@@ -300,9 +304,8 @@ const now=new Date();
 
 const distance=reunionDate-now;
 
-const total=reunionDate-startDate;
-
-const passed=now-startDate;
+const total = reunionDate - progressStartDate;
+const passed = now - progressStartDate;
 
 let progress=(passed/total)*100;
 
@@ -316,8 +319,7 @@ document.getElementById("progressText").innerHTML=
 
 progress.toFixed(1)+"% of the waiting journey completed";
 
-const waited=Math.floor((now-startDate)/(1000*60*60*24));
-
+const waited = Math.floor((now - waitStartDate)/(1000*60*60*24));
 document.getElementById("daysPassed").innerHTML=waited+" Days";
 
 document.getElementById("clock").innerHTML=
